@@ -28,6 +28,11 @@ markdown_extensions:
   # - attr_list
   - pymdownx.arithmatex:
       generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
   # - pymdownx.superfences
   # - pymdownx.details
   # - pymdownx.magiclink
