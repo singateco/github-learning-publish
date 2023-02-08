@@ -4,7 +4,7 @@ theme:
     name: 'material'
     font:
       text: Noto Sans KR
-      code: Roboto Mono
+      code: JetBrains Mono
     palette:
 
     # Light mode
