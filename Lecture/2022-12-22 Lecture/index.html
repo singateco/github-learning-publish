@@ -1,0 +1,604 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../2022-12-21%20Lecture/" rel="prev"/>
+<link href="../2022-12-23%20Lecture/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.0" name="generator"/>
+<title>PL/SQL - JAVA AI - Spring 정리</title>
+<link href="../../assets/stylesheets/main.402914a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="pink" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#plsql">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="JAVA AI - Spring 정리" class="md-header__button md-logo" data-md-component="logo" href="../.." title="JAVA AI - Spring 정리">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            JAVA AI - Spring 정리
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              PL/SQL
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="pink" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="pink" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="JAVA AI - Spring 정리" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="JAVA AI - Spring 정리">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    JAVA AI - Spring 정리
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java%20Project%202/">
+        쿠 프로젝트
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lecture
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Lecture
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-15%20Lecture/">
+        2022 11 15 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-16%20Lecture/">
+        2022 11 16 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-17%20Lecture/">
+        2022 11 17 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-18%20Lecture/">
+        2022 11 18 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-22%20Lecture/">
+        2022 11 22 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-23%20Lecture/">
+        자바의 구조
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-24%20Lecture/">
+        Math.random()
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-25%20Lecture/">
+        반복문
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-28%20Lecture/">
+        배열
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-29%20Lecture/">
+        java의 함수
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-30%20Lecture/">
+        Stream
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-01%20Lecture/">
+        ByteArrayInputStream
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-02%20Lecture/">
+        this (calling other constuctor)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-05%20Lecture/">
+        상위 클래스로 묵시적 클래스 형 변환 (Upcasting)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-06%20Lecture/">
+        Serialization (직렬화)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-07%20Lecture/">
+        StringBuilder &amp; StringBuffer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-08%20Lecture/">
+        Thread
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-09%20Lecture/">
+        제네릭 프로그래밍의 장점
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-12%20Lecture/">
+        HashSet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-13%20Lecture/">
+        GUI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-14%20Lecture/">
+        라디오버튼
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-15%20Lecture/">
+        2022 12 15 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-16%20Lecture/">
+        ServerSocket
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-19%20Lecture/">
+        Between A and B
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-21%20Lecture/">
+        JDBC *(Java DataBase Connectivity)*
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+        PL/SQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-23%20Lecture/">
+        FUNCTION
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-26%20Lecture/">
+        TRIGGER old
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-28%20Lecture/">
+        HTML tags
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-29%20Lecture/">
+        CSS Psuedo classes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-30%20Lecture/">
+        CSS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-04%20Lecture/">
+        Javascript
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-05%20Lecture/">
+        appendChild
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-06%20Lecture/">
+        windows.onload
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-09%20Lecture/">
+        Getting user input: Get Method
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-10%20Lecture/">
+        SOAP vs RESTful
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-11%20Lecture/">
+        JSP의 내장 객체
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-12%20Lecture/">
+        JSP action tags
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-13%20Lecture/">
+        Using JDBC with JSP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-16%20Lecture/">
+        DAO objects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-18%20Lecture/">
+        EL : Expression Language
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-25%20Lecture/">
+        스프링 프레임워크
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-26%20Lecture/">
+        스프링 DI (XML)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-27%20Lecture/">
+        Annotation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-30%20Lecture/">
+        Setting AOP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-02%20Lecture/">
+        AOP: pointcut
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-03%20Lecture/">
+        레거시 XML 세팅
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-06%20Lecture/">
+        RequestParam Map &amp; List로 받기
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-07%20Lecture/">
+        Redirect
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-08%20Lecture/">
+        Application(Scope)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-09%20Lecture/">
+        Interceptor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-10%20Lecture/">
+        Validator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-13%20Lecture/">
+        스프링 MVC 3 tier
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-14%20Lecture/">
+        Property 파일 2개 이상 사용시
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-15%20Lecture/">
+        Mapper, DAO, Service
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-16%20Lecture/">
+        2023 02 16 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SOAP%20vs%20REST/">
+        SOAP
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<h1 id="plsql">PL/SQL<a class="headerlink" href="#plsql" title="Permanent link">¶</a></h1>
+<ul>
+<li>
+<p>Procedural Language extension to SQL</p>
+</li>
+<li>
+<p>SQL을 확장한 절차적 언어</p>
+</li>
+<li>관계형 데이터베이스에서 사용되는 오라클 엑세스 언어</li>
+<li>PL/SQL 블록을 보내면 서버쪽에서 블록을 받아 procedural을 나눈다.</li>
+<li>프로그램 종류 : procedure, function, trigger</li>
+</ul>
+<h1 id="stored-procedure">Stored Procedure<a class="headerlink" href="#stored-procedure" title="Permanent link">¶</a></h1>
+<ul>
+<li>서버에 저장해놓고 주기적으로 반복해서 사용하는 Procedure</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>CREATE OR REPLACE PROCEDURE print_contact( -- OR REPLACE : 이미 있을시 기존 프로시저 대체 (생략가능)
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    in_customer_id IN NUMBER  -- IN, OUT, IN OUT Parameter
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>)
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>IS
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>  r_contact contacts%ROWTYPE;
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>BEGIN
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>  -- get contact based on customer id
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>  SELECT *
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>  INTO r_contact
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a>  FROM contacts
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>  WHERE customer_id = p_customer_id;
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>  -- print out contact's information
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>  dbms_output.put_line( r_contact.first_name || ' ' ||
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>  r_contact.last_name || '&lt;' || r_contact.email ||'&gt;' );
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a>EXCEPTION
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>   WHEN OTHERS THEN
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>      dbms_output.put_line( SQLERRM );
+<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>END;
+</code></pre></div>
+<h2 id="executing-stored-procedures">Executing Stored Procedures<a class="headerlink" href="#executing-stored-procedures" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>EXECUTE print_contract(324324);
+</code></pre></div>
+<h2 id="in-out-inout">IN, OUT, INOUT<a class="headerlink" href="#in-out-inout" title="Permanent link">¶</a></h2>
+<p><strong><code>IN</code> mode</strong>:</p>
+<blockquote>
+<ul>
+<li>Default mode</li>
+<li>Passes a value to the subprogram.</li>
+<li>Formal parameter acts like a constant: When the subprogram begins, its value is that of either its actual parameter or default value, and the subprogram cannot change this value.</li>
+<li>Actual parameter can be a constant, initialized variable, literal, or expression.</li>
+<li>Actual parameter is passed by reference.</li>
+</ul>
+</blockquote>
+<p><strong><code>OUT</code> mode:</strong></p>
+<blockquote>
+<ul>
+<li>Must be specified.</li>
+<li>Returns a value to the invoker.</li>
+<li>Formal parameter is initialized to the default value of its type. The default value of the type is <code>NULL</code> except for a record type with a non-<code>NULL</code> default value.</li>
+<li>When the subprogram begins, the formal parameter has its initial value regardless of the value of its actual parameter. Oracle recommends that the subprogram assign a value to the formal parameter.</li>
+<li>If the default value of the formal parameter type is <code>NULL</code>, then the actual parameter must be a variable whose data type is not defined as <code>NOT NULL</code>.</li>
+<li>By default, actual parameter is passed by value; if you specify <code>NOCOPY</code>, it might be passed by reference.</li>
+</ul>
+</blockquote>
+<p><strong><code>IN OUT</code> mode:</strong></p>
+<blockquote>
+<ul>
+<li>Must be specified.</li>
+<li>Passes an initial value to the subprogram and returns an updated value to the invoker.</li>
+<li>Formal parameter acts like an initialized variable: When the subprogram begins, its value is that of its actual parameter. Oracle recommends that the subprogram update its value.</li>
+<li>Actual parameter must be a variable (typically, it is a string buffer or numeric accumulator).</li>
+<li>By default, actual parameter is passed by value (in both directions); if you specify <code>NOCOPY</code>, it might be passed by reference.</li>
+</ul>
+</blockquote>
+<h2 id="using-out-parameter">USING OUT Parameter<a class="headerlink" href="#using-out-parameter" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>CREATE OR REPLACE PROCEDURE TEST3
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>(V_STU_NO IN STUDENT.STU_NO%TYPE,
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>V_STU_NAME OUT STUDENT.STU_NAME%TYPE)
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>IS
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>BEGIN
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>    SELECT STU_NAME
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>    INTO V_STU_NAME
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>    FROM STUDENT
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>    WHERE STU_NO = V_STU_NO;
+<a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>END TEST3;
+<a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a>/
+<a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>
+<a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a>VARIABLE D_STU_NAME VARCHAR2(10);
+<a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a>EXECUTE TEST3(20153075,:D_STU_NAME);
+<a href="#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a>
+<a href="#__codelineno-2-16" id="__codelineno-2-16" name="__codelineno-2-16"></a>PRINT D_STU_NAME;
+</code></pre></div>
+<h1 id="sequence">SEQUENCE<a class="headerlink" href="#sequence" title="Permanent link">¶</a></h1>
+<p>A sequence is an object in Oracle that is used to generate a number sequence.
+This can be useful when you need to create a unique number to act as a primary key.</p>
+<h3 id="create-sequence">CREATE SEQUENCE<a class="headerlink" href="#create-sequence" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>CREATE SEQUENCE schema_name.sequence_name
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>[INCREMENT BY interval]
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>[START WITH first_number]
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>[MAXVALUE max_value | NOMAXVALUE]
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>[MINVALUE min_value | NOMINVALUE]
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>[CYCLE | NOCYCLE]
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>[CACHE cache_size | NOCACHE]
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>[ORDER | NOORDER];
+</code></pre></div>
+<p><code>CYCLE</code>: Use <code>CYCLE</code> to allow the sequence to generate value after it reaches the limit, min value for a descending sequence and max value for an ascending sequence.</p>
+<p>When an ascending sequence reaches its maximum value, it generates the minimum value.</p>
+<p>On the other hand, when a descending sequence reaches its minimum value, it generates the maximum value.</p>
+<hr/>
+<p><code>CACHE</code> : Specify the number of sequence values that Oracle will preallocate and keep in the memory for faster access.</p>
+<p>The minimum of the cache size is 2. The maximum value of the cache size is based on this formula:</p>
+<p><code>(CEIL (MAXVALUE - MINVALUE)) / ABS (INCREMENT)</code></p>
+<p>Code language: SQL (Structured Query Language) (sql)</p>
+<p>In case of a system failure event, you will lose all cached sequence values that have not been used in committed SQL statements.</p>
+<hr/>
+<h4 id="create-sequence-example">create sequence example<a class="headerlink" href="#create-sequence-example" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>CREATE SEQUENCE id_seq
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>    INCREMENT BY 10
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>    START WITH 10
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>    MINVALUE 10
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>    MAXVALUE 100
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>    CYCLE
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>    CACHE 2;
+</code></pre></div>
+<p>To get the next value of the sequence, you use the <code>NEXTVAL</code> pseudo-column:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>SELECT id_seq.NEXTVAL 
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>FROM dual; -- OUTPUT: 10
+</code></pre></div>
+<p>To get the current value of the sequence, you use the <code>CURRVAL</code> pseudo-column:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>SELECT id_seq.CURRVAL
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>FROM dual; -- OUTPUT: 10
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>SELECT id_seq.NEXTVAL 
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a>FROM dual
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a>CONNECT BY level &lt;= 9; -- OUTPUT : 20, 30, 40, 50, 60, 70, 80, 90, 100
+</code></pre></div>
+<p>Because we set the <code>CYCLE</code> option for the <code>id_seq</code> sequence, the next value of the <code>id_seq</code> will be 10:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>SELECT id_seq.NEXTVAL FROM dual; -- 10
+</code></pre></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.ce72ebac.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>

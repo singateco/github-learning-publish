@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<link href="../2022-11-18%20Lecture/" rel="prev"/>
+<link href="../2022-11-23%20Lecture/" rel="next"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.4.2, mkdocs-material-9.1.0" name="generator"/>
+<title>2022 11 22 Lecture - JAVA AI - Spring 정리</title>
+<link href="../../assets/stylesheets/main.402914a4.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.a0c5b2b5.min.css" rel="stylesheet"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback" rel="stylesheet"/>
+<style>:root{--md-text-font:"Noto Sans KR";--md-code-font:"JetBrains Mono"}</style>
+<script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+</head>
+<body data-md-color-accent="indigo" data-md-color-primary="pink" data-md-color-scheme="default" dir="ltr">
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+          Skip to content
+        </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header md-header--shadow" data-md-component="header">
+<nav aria-label="Header" class="md-header__inner md-grid">
+<a aria-label="JAVA AI - Spring 정리" class="md-header__button md-logo" data-md-component="logo" href="../.." title="JAVA AI - Spring 정리">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            JAVA AI - Spring 정리
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              2022 11 22 Lecture
+            
+          </span>
+</div>
+</div>
+</div>
+<form class="md-header__option" data-md-component="palette">
+<input aria-label="Switch to dark mode" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="pink" data-md-color-scheme="default" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_2" hidden="" title="Switch to dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+</label>
+<input aria-label="Switch to light mode" class="md-option" data-md-color-accent="blue" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="pink" data-md-color-scheme="slate" id="__palette_2" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Switch to light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"></path></svg>
+</label>
+</form>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="Search" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="Search" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"></path></svg>
+</label>
+<nav aria-label="Search" class="md-search__options">
+<button aria-label="Clear" class="md-search__icon md-icon" tabindex="-1" title="Clear" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            Initializing search
+          </div>
+<ol class="md-search-result__list" role="presentation"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Navigation" class="md-nav md-nav--primary" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="JAVA AI - Spring 정리" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="JAVA AI - Spring 정리">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"></path></svg>
+</a>
+    JAVA AI - Spring 정리
+  </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../Java%20Project%202/">
+        쿠 프로젝트
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lecture
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Lecture
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-15%20Lecture/">
+        2022 11 15 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-16%20Lecture/">
+        2022 11 16 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-17%20Lecture/">
+        2022 11 17 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-18%20Lecture/">
+        2022 11 18 Lecture
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
+        2022 11 22 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-23%20Lecture/">
+        자바의 구조
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-24%20Lecture/">
+        Math.random()
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-25%20Lecture/">
+        반복문
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-28%20Lecture/">
+        배열
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-29%20Lecture/">
+        java의 함수
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-11-30%20Lecture/">
+        Stream
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-01%20Lecture/">
+        ByteArrayInputStream
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-02%20Lecture/">
+        this (calling other constuctor)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-05%20Lecture/">
+        상위 클래스로 묵시적 클래스 형 변환 (Upcasting)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-06%20Lecture/">
+        Serialization (직렬화)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-07%20Lecture/">
+        StringBuilder &amp; StringBuffer
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-08%20Lecture/">
+        Thread
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-09%20Lecture/">
+        제네릭 프로그래밍의 장점
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-12%20Lecture/">
+        HashSet
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-13%20Lecture/">
+        GUI
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-14%20Lecture/">
+        라디오버튼
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-15%20Lecture/">
+        2022 12 15 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-16%20Lecture/">
+        ServerSocket
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-19%20Lecture/">
+        Between A and B
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-21%20Lecture/">
+        JDBC *(Java DataBase Connectivity)*
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-22%20Lecture/">
+        PL/SQL
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-23%20Lecture/">
+        FUNCTION
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-26%20Lecture/">
+        TRIGGER old
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-28%20Lecture/">
+        HTML tags
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-29%20Lecture/">
+        CSS Psuedo classes
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2022-12-30%20Lecture/">
+        CSS
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-04%20Lecture/">
+        Javascript
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-05%20Lecture/">
+        appendChild
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-06%20Lecture/">
+        windows.onload
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-09%20Lecture/">
+        Getting user input: Get Method
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-10%20Lecture/">
+        SOAP vs RESTful
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-11%20Lecture/">
+        JSP의 내장 객체
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-12%20Lecture/">
+        JSP action tags
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-13%20Lecture/">
+        Using JDBC with JSP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-16%20Lecture/">
+        DAO objects
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-18%20Lecture/">
+        EL : Expression Language
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-25%20Lecture/">
+        스프링 프레임워크
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-26%20Lecture/">
+        스프링 DI (XML)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-27%20Lecture/">
+        Annotation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-01-30%20Lecture/">
+        Setting AOP
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-02%20Lecture/">
+        AOP: pointcut
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-03%20Lecture/">
+        레거시 XML 세팅
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-06%20Lecture/">
+        RequestParam Map &amp; List로 받기
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-07%20Lecture/">
+        Redirect
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-08%20Lecture/">
+        Application(Scope)
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-09%20Lecture/">
+        Interceptor
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-10%20Lecture/">
+        Validator
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-13%20Lecture/">
+        스프링 MVC 3 tier
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-14%20Lecture/">
+        Property 파일 2개 이상 사용시
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-15%20Lecture/">
+        Mapper, DAO, Service
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../2023-02-16%20Lecture/">
+        2023 02 16 Lecture
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SOAP%20vs%20REST/">
+        SOAP
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+</nav>
+</div>
+</div>
+</div>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<div class="highlight"><pre><span></span><code>https://cafe.naver.com/jvjvjobjob
+</code></pre></div>
+<p>네이버 카페</p>
+<p>1시 20분 부터 점심시간</p>
+<p>중간확인 : 2시 반 부터</p>
+<p>6시 20분 </p>
+<hr/>
+<h1 id="_1">컴파일<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<ul>
+<li>자바 : .java -&gt; (컴파일) -&gt; .class</li>
+<li>C : .c -&gt; .obj -&gt; .exe</li>
+<li>C++ : .cpp -&gt; .obj  -&gt; .exe</li>
+</ul>
+<h1 id="_2">자바의 특성<a class="headerlink" href="#_2" title="Permanent link">¶</a></h1>
+<p>플랫폼 종속성 (platform dependency)가 없다. = CPU, 운영체제 관계 없이 실행 가능.</p>
+<p><strong>자바 가상 기계 (JVM)</strong> : 각기 다른 플랫폼에 설치해 동일한 자바 실행 환경 제공</p>
+<p><strong>바이트 코드</strong> <em>(.class)</em>: 자바 가상 기계에서 실행 가능한 바이너리 코드
+    바이트 코드는 컴퓨터 CPU에 의해 직접 실행되지 않음
+    자바 가상 기계가 인터프리터 방식으로 바이트 코드 해석</p>
+<h1 id="_3">자바의 종류<a class="headerlink" href="#_3" title="Permanent link">¶</a></h1>
+<ul>
+<li>Java SE (Standard Edition)</li>
+<li>Java ME</li>
+<li>Java EE (Enterprise Edition)</li>
+</ul>
+<h1 id="jdk-jre">JDK와 JRE<a class="headerlink" href="#jdk-jre" title="Permanent link">¶</a></h1>
+<ul>
+<li>JDK (Java Development Kit)
+    자바 응용 개발 환경, 개발에 필요한 도구 포함 (컴파일러, JRE, 클래스 라이브러리..)</li>
+<li>JRE (Java Runtime Environment)</li>
+</ul>
+<h1 id="api-package">API와 Package<a class="headerlink" href="#api-package" title="Permanent link">¶</a></h1>
+<ul>
+<li>자바 API<ul>
+<li>JDK에 포함된 클래스 라이브러리</li>
+<li>https://docs.oracle.com/javase/7/docs/api/</li>
+</ul>
+</li>
+<li>자바 패키지<ul>
+<li>서로 관련된 클래스들을 분류하여 묶어 놓은 것</li>
+<li>계층구조로 되어 있음</li>
+</ul>
+</li>
+</ul>
+<h1 id="_4">자바의 특성<a class="headerlink" href="#_4" title="Permanent link">¶</a></h1>
+<ul>
+<li><strong>객체 지향</strong></li>
+<li>멀티스레드</li>
+<li>플랫폼 독립성</li>
+<li>소스(.java)와 클래스(.class) 파일</li>
+</ul>
+<h1 id="_5">주석 / 출력문<a class="headerlink" href="#_5" title="Permanent link">¶</a></h1>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Test</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="p">{</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">        </span><span class="c1">//주석</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">        </span><span class="cm">/*여러줄 주석</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="cm">        여러줄*/</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"출력 후 한 줄 띄기"</span><span class="p">)</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"그냥 출력"</span><span class="p">)</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">        </span><span class="c1">//sysout 입력 후 ctrl+space로 자동완성 </span>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="p">}</span>
+</code></pre></div>
+<h1 id="_6">식별자<a class="headerlink" href="#_6" title="Permanent link">¶</a></h1>
+<ul>
+<li>안되는 특수 문자: @, #, !, 공백, 탭</li>
+<li>되는 특수문자: _, $</li>
+<li>대소문자 구별 : (Test != test)</li>
+</ul>
+<h1 id="eclipse">Eclipse 실행 단축키<a class="headerlink" href="#eclipse" title="Permanent link">¶</a></h1>
+<ul>
+<li><code>F11</code></li>
+</ul>
+<h1 id="_7">문자열과 하나의 문자<a class="headerlink" href="#_7" title="Permanent link">¶</a></h1>
+<p>문자열일시 <code>"큰 따옴표"</code> 안에 넣어야만 출력 가능</p>
+<p>올바른 예:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"안녕"</span><span class="p">);</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="sc">'안'</span><span class="p">);</span>
+</code></pre></div></p>
+<p>잘못된 예:
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="err">'</span><span class="n">안녕</span><span class="err">'</span><span class="p">);</span>
+</code></pre></div></p>
+<h1 id="_8">자바의 데이터 타입<a class="headerlink" href="#_8" title="Permanent link">¶</a></h1>
+<ul>
+<li>
+<p>기본 타입 : 8개</p>
+<ul>
+<li>boolean : True / False <em>(1바이트)</em></li>
+<li>char : 하나의 문자 Unicode <em>(2바이트)</em></li>
+<li>정수<ul>
+<li>byte <em>(1바이트)</em> </li>
+<li>short <em>(2바이트)</em></li>
+<li>int <em>(4바이트)</em></li>
+<li>long <em>(8바이트)</em></li>
+</ul>
+</li>
+<li>실수<ul>
+<li>float <em>(4바이트)</em></li>
+<li>double <em>(8바이트)</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>레퍼런스 타입 : 1개이며 용도는 다음 3가지</p>
+<ul>
+<li>클래스(class)에 대한 레퍼런스</li>
+<li>인터페이스(interface)에 대한 레퍼런스</li>
+<li>배열(array)에 대한 레퍼런스</li>
+</ul>
+</li>
+</ul>
+<h1 id="_9">변수와 선언<a class="headerlink" href="#_9" title="Permanent link">¶</a></h1>
+<ul>
+<li>변수 선언</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">25</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">//price = 3.5 (틀린 예)</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">isOn</span><span class="p">;</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="kt">byte</span><span class="w"> </span><span class="n">Max127</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mi">124</span><span class="p">;</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1">//Max127 = 128</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="kt">char</span><span class="w"> </span><span class="n">c1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'a'</span><span class="p">,</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'b'</span><span class="p">,</span><span class="w"> </span><span class="n">c3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'c'</span><span class="p">;</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="c1">//char는 하나의 문자만 인식한다</span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1">//(잘못된 예) char c1 = "a"</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">String</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"hi"</span><span class="p">;</span>
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="kt">double</span><span class="w"> </span><span class="n">weight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">75.56</span><span class="p">;</span>
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="c1">// = :  대입연산자</span>
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="c1">//      (오른쪽의 값을 왼쪽에 대입한다)</span>
+<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"범위: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">radius</span><span class="p">);</span>
+<a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">c1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">" "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c3</span><span class="p">);</span>
+<a href="#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+<a href="#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">weight</span><span class="p">);</span>
+</code></pre></div>
+<h1 id="literal">리터럴 (literal)<a class="headerlink" href="#literal" title="Permanent link">¶</a></h1>
+<p>프로그램에서 직접 표현한 값.</p>
+<ul>
+<li>
+<p>정수 타입 리터럴</p>
+<ul>
+<li>8진수 : 0으로 시작 
+    int n = 015;</li>
+<li>16진수 : 0x로 시작
+    int n = 0x15;</li>
+<li>10진수 : 0으로 시작하지 않는 숫자</li>
+<li>2진수 : 0b로 시작
+    int n = 0b0101;</li>
+</ul>
+</li>
+<li>
+<p>long 타입 리터럴은 숫자 뒤에 L 또는 l을 붙여 표시.
+    ex) <code>24L</code>, <code>3578l</code></p>
+</li>
+<li>
+<p>부동 소수점 실수 직접 표시</p>
+<ul>
+<li><code>12.</code> 또는 <code>12.0</code></li>
+<li><code>.1234</code> 또는 <code>0.1234</code> 또는 <code>1234E-4</code></li>
+<li><code>0.1234</code> 또는 <code>0.1234d</code> -&gt; <code>double</code></li>
+<li><code>0.1234f</code> 또는 <code>0.1234F</code> -&gt; <code>float</code></li>
+<li><code>1234D</code> 또는 <code>1234d</code> -&gt; <code>double</code> (<code>1234.0</code>)</li>
+<li><code>1234F</code> 또는 <code>1234f</code> -&gt; <code>float</code> (<code>1234.0</code>)</li>
+</ul>
+</li>
+<li>
+<p>논리 값 표시
+     true 또는 false</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kt">boolean</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">//10 &gt; 0이 참이므로 c는 true</span>
+</code></pre></div>
+<ul>
+<li>null 리터럴
+    어떠한 레퍼런스 타입의 값으로도 사용 가능</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="c1">//int n = null; 기본 데이터 타입에는 사용 불가</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">String</span><span class="w"> </span><span class="n">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li><mark>문자열 리터럴</mark><ul>
+<li>큰 따옴표로 묶어서 표현
+    "Good", "Morning", "자바", "3.19", "25"</li>
+<li><strong>자바에서 문자열은 객체이므로 기본 타입 아님</strong></li>
+<li>문자열 리터럴 String 객체로 자동 처리</li>
+<li>String = 레퍼런스 타입 (class 타입)</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">String</span><span class="w"> </span><span class="n">str1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Welcome"</span><span class="p">;</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">String</span><span class="w"> </span><span class="n">str2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">null</span><span class="p">;</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str1</span><span class="p">);</span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str2</span><span class="p">)</span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="cm">/*output:</span>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="cm">Welcome</span>
+<a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="cm">null*/</span>
+</code></pre></div>
+<h1 id="_10">상수<a class="headerlink" href="#_10" title="Permanent link">¶</a></h1>
+<ul>
+<li>상수: 고정된 값</li>
+<li><strong><code>final</code> 키워드 사용</strong></li>
+<li>선언 시 초기값 지정</li>
+<li>실행 중 값 변경 불가</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kd">final</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">PI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.141592</span><span class="p">;</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">LENGTH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+</code></pre></div>
+<h1 id="_11">타입 변환<a class="headerlink" href="#_11" title="Permanent link">¶</a></h1>
+<h2 id="_12">자동 타입 변환<a class="headerlink" href="#_12" title="Permanent link">¶</a></h2>
+<ul>
+<li>원래의 타입보다 큰 타입으로 바뀔 때 발생
+<code>byte &gt;&gt; short/char &gt;&gt; int &gt;&gt; long &gt;&gt; float &gt;&gt; double</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kt">long</span><span class="w"> </span><span class="n">var1</span><span class="p">;</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">43159</span><span class="p">;</span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">var1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">var1</span><span class="p">);</span><span class="w"> </span><span class="c1">//output : 43159</span>
+</code></pre></div>
+<h2 id="_13">강제 타입 변환<a class="headerlink" href="#_13" title="Permanent link">¶</a></h2>
+<ul>
+<li>개발자가 코드에 명시적으로 타입 변환 지정</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kt">short</span><span class="w"> </span><span class="n">var1</span><span class="p">;</span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">855638017</span><span class="p">;</span><span class="w"> </span><span class="c1">//0x33000001</span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">var1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">short</span><span class="p">)</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="c1">//0x0001</span>
+<a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">var1</span><span class="p">);</span><span class="w"> </span><span class="c1">//output : 1</span>
+<a href="#__codelineno-10-5" id="__codelineno-10-5" name="__codelineno-10-5"></a>
+<a href="#__codelineno-10-6" id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="kt">double</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.9</span><span class="p">;</span>
+<a href="#__codelineno-10-7" id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="c1">//i == 1</span>
+<a href="#__codelineno-10-8" id="__codelineno-10-8" name="__codelineno-10-8"></a>
+<a href="#__codelineno-10-9" id="__codelineno-10-9" name="__codelineno-10-9"></a><span class="n">System</span><span class="p">.</span><span class="na">put</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="mi">10</span><span class="o">/</span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">//2</span>
+<a href="#__codelineno-10-10" id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="mi">10</span><span class="o">/</span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="mi">4</span><span class="p">);</span><span class="w"> </span><span class="c1">//2.5</span>
+<a href="#__codelineno-10-11" id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="kt">float</span><span class="p">)(</span><span class="mi">10</span><span class="o">/</span><span class="mi">4</span><span class="p">));</span><span class="w"> </span><span class="c1">//2.0</span>
+<a href="#__codelineno-10-12" id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="mf">2.8</span><span class="o">+</span><span class="mf">1.8</span><span class="p">);</span><span class="w"> </span><span class="c1">//3.8</span>
+<a href="#__codelineno-10-13" id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="mf">2.8</span><span class="o">+</span><span class="mf">1.8</span><span class="p">));</span><span class="w"> </span><span class="c1">//4</span>
+</code></pre></div>
+<h1 id="_14">식과 연산자<a class="headerlink" href="#_14" title="Permanent link">¶</a></h1>
+<ul>
+<li>연산 : 주어진 식을 계산하여 결과를 얻어내는 과정</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>연산의 종류</th>
+<th>연산자</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>증감</td>
+<td><code>++ --</code></td>
+</tr>
+<tr>
+<td>산술</td>
+<td><code>+ - * / %</code></td>
+</tr>
+<tr>
+<td>시프트</td>
+<td><code>&gt;&gt; &lt;&lt; &gt;&gt;&gt;</code></td>
+</tr>
+<tr>
+<td>비교</td>
+<td><code>&gt; &lt; &gt;= &lt;= == !=</code></td>
+</tr>
+<tr>
+<td>비트</td>
+<td>\&amp; | ^ ~</td>
+</tr>
+<tr>
+<td>논리</td>
+<td>\&amp;\&amp; || ! ^</td>
+</tr>
+<tr>
+<td>조건</td>
+<td><code>? :</code></td>
+</tr>
+<tr>
+<td>대입</td>
+<td>= *= /= += -= &amp;= ^= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;=</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_15">산술 연산자<a class="headerlink" href="#_15" title="Permanent link">¶</a></h2>
+<ul>
+<li><code>/</code> : 정수 몫</li>
+<li><code>%</code> : 정수 나머지</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>int r = x % 2 // r이 1이면 x는 홀수
+</code></pre></div>
+<h2 id="_16">비트 연산자<a class="headerlink" href="#_16" title="Permanent link">¶</a></h2>
+<ul>
+<li>피 연산자의 각 비트들을 대상으로 하는 연산</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>기호</th>
+<th>뜻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a &amp; b</code></td>
+<td>AND</td>
+</tr>
+<tr>
+<td><code>a | b</code></td>
+<td>OR</td>
+</tr>
+<tr>
+<td><code>a ^ b</code></td>
+<td>XOR</td>
+</tr>
+<tr>
+<td><code>~ a</code></td>
+<td>NOT</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_17">시프트 연산자<a class="headerlink" href="#_17" title="Permanent link">¶</a></h2>
+<p>https://stackoverflow.com/questions/141525/what-are-bitwise-shift-bit-shift-operators-and-how-do-they-work</p>
+<ul>
+<li><code>a &gt;&gt; b</code> </li>
+<li><code>a &gt;&gt;&gt; b</code> </li>
+<li><code>a &lt;&lt; b</code> </li>
+</ul>
+<p><img alt="bitshifting.png" src="../bitshifting.png"/></p>
+<h3 id="examples-of-bit-shifting">Examples of bit shifting<a class="headerlink" href="#examples-of-bit-shifting" title="Permanent link">¶</a></h3>
+<h4 id="using-an-16-bit-integer-to-represent-2-8-bit-intergers">using an 16-bit integer to represent 2 8-bit intergers<a class="headerlink" href="#using-an-16-bit-integer-to-represent-2-8-bit-intergers" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1">// Byte1: 11110000</span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="c1">// Byte2: 00001111</span>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a>
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="n">Int16</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">byte</span><span class="p">)(</span><span class="n">Byte1</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="m">8</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Byte2</span><span class="p">));</span>
+<a href="#__codelineno-12-5" id="__codelineno-12-5" name="__codelineno-12-5"></a>
+<a href="#__codelineno-12-6" id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="c1">// value = 000011111110000;</span>
+</code></pre></div>
+<h4 id="16-bit-color">16-bit color<a class="headerlink" href="#16-bit-color" title="Permanent link">¶</a></h4>
+<p>A simple real example in graphics programming is that a 16-bit pixel is represented as follows:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>bit | 15| 14| 13| 12| 11| 10| 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1  | 0 |
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a>    |       Blue        |         Green         |       Red          |
+</code></pre></div>
+<p>To get at the green value you would do this:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a> #define GREEN_MASK  0x7E0 //0000011111100000 in binary
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a> #define GREEN_OFFSET  5
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a> // Read green
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a> uint16_t green = (pixel &amp; GREEN_MASK) &gt;&gt; GREEN_OFFSET;
+</code></pre></div>
+<h4 id="fast-multiplication-and-division-by-powers-of-2">fast multiplication and division by powers of 2<a class="headerlink" href="#fast-multiplication-and-division-by-powers-of-2" title="Permanent link">¶</a></h4>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a> i &lt;&lt;= x;  // i *= 2^x;
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a> i &gt;&gt;= y;  // i /= 2^y;
+</code></pre></div>
+</article>
+</div>
+</div>
+</main>
+<footer class="md-footer">
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material for MkDocs
+    </a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+<script src="../../assets/javascripts/bundle.ce72ebac.min.js"></script>
+<script src="../../javascripts/mathjax.js"></script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</body>
+</html>
